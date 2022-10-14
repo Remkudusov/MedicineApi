@@ -38,9 +38,7 @@ namespace MedicineApi.Controllers
                 .Include(d => d.Specialization)
                 .Include(d => d.District)
                 .ToListAsync();
-            var paginatedDoctors = doctors.Paginate(paging).ToList();
-            var result = _mapper.Map<IEnumerable<DoctorListViewModel>>(paginatedDoctors);
-
+            var result = doctors.Paginate(paging).ToList();
             return _mapper.Map<IEnumerable<DoctorListViewModel>>(result);
         }
 
